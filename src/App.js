@@ -8,10 +8,8 @@ const Addrow = function() {
 function App() {
   
   return (
-    
     <div className="App">
       <Row/>
-      <button className="add-row-button" onClick={Addrow}>Add Row</button>
     </div>
   );
 }

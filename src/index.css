@@ -12,7 +12,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.App {
+/* .App {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,4 +20,4 @@ code {
 }
 .add-row-button {
   margin-top:20px;
-}
+} */
