@@ -1,10 +1,31 @@
 function Table(){
+    const AddColumn = () =>{
+        // //createing td
+        // let created_td = document.createElement("td");
+        //creating div inside td
+        let created_div = document.createElement("div");
+        created_div.className = "column";
+        //creating checkbox
+        let created_checkbox = document.createElement("input")
+        created_checkbox.setAttribute("type", "checkbox");
+        //adding checkbox to div
+        created_div.appendChild(created_checkbox);
+        // //appending divoftd to td
+        // created_td.appendChild(divoftd);
+
+        let created_element = created_div;
+        let allrows = document.getElementsByClassName("row");
+        for(var i=0;i<allrows.length;i++)
+        {
+            let clone = created_element.cloneNode(true);
+            document.getElementsByClassName("row")[i].appendChild(clone);
+        }
+    }
     return(
         <div className="babu-container">
             <div className="table">
                 <div className="row">
                     <div contentEditable="true" className="column col-heading">Wakeup Early</div>
-                    <div className="column">2</div>
                 </div>
                 <div className="row"><div contentEditable="true" className="column col-heading">250 JJ's - morning</div></div>
                 <div className="row"><div contentEditable="true" className="column col-heading">Logs</div></div>
@@ -23,7 +44,7 @@ function Table(){
                 <div className="row"><div contentEditable="true" className="column col-heading">Control</div></div>
             </div>
             <div>
-                <button>Add Column</button>
+                <button onClick={AddColumn}>Add Column</button>
             </div>
         </div>        
     )
