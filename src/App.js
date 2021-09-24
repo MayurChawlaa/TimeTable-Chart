@@ -1,4 +1,4 @@
-import Row from "./Row";
+import Table from "./Table";
 
 const Addrow = function() {
   console.log("addrow clicked");
@@ -9,7 +9,7 @@ function App() {
   
   return (
     <div className="App">
-      <Row/>
+      <Table/>
     </div>
   );
 }
