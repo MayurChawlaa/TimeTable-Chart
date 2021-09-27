@@ -84,6 +84,12 @@ code {
   font-size: larger;
   padding: 5px;
 }
+.option-buttons
+{
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
 /* .App {
   display: flex;
   flex-direction: column;

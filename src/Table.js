@@ -57,6 +57,53 @@ function Table(){
         let table = document.getElementById("table");
         table.removeChild(table.lastElementChild);
     }
+    const trySave = () => {
+        console.log("Saving");
+        let table = document.getElementById("table");
+        console.log(table);
+        console.log("Child Count : ", table.childElementCount);
+        
+        console.log("Child Elements : ");
+        for(let i = 0;i<table.childElementCount;i++)
+        {
+            let oneRow = table.childNodes[i];
+            console.log("Row ",i," ", oneRow);
+            // let numofTdinaRow = oneRow.childNodes[0].childElementCount;
+            // let arrayOfCheckboxes = [];
+            // let rowDiv = oneRow.childNodes[0];
+            // //console.log(rowDiv.childNodes[0].childNodes[0].innerHTML);
+            // for(let j=0;j<numofTdinaRow;j++)
+            // {
+            //     //console.log(rowDiv.childNodes[j]);
+            //     let tdDiv = rowDiv.childNodes[j].childNodes[0];
+            //     if(tdDiv.childNodes[0].textContent)
+            //     {
+            //         console.log(tdDiv.childNodes[0].textContent);
+            //     }
+            //     else
+            //     {
+            //         let temp = tdDiv.childNodes;
+            //         if(temp[0].checked)
+            //         {
+            //             //console.log(1);
+            //             arrayOfCheckboxes.push(1);
+            //         }
+            //         else
+            //         {
+            //             //console.log(0);
+            //             arrayOfCheckboxes.push(0);
+            //         }
+            //     }
+            // }
+            // console.log(arrayOfCheckboxes);
+        }
+
+        // let jsonObjString = JSON.stringify(table);
+        // JSON.parse(jsonObjString);
+        // console.log(JSON.parse(jsonObjString));
+        // let fs = require('fs');
+        // fs.writeFile("saveData.json",jsonObj,'utf-8',()=>{});
+    }
     return(
         <div className="babu-container">
             <div id="table" className="table">
@@ -79,14 +126,20 @@ function Table(){
                 <div className="row"><div contentEditable="true" className="column col-heading">Early to Bed</div></div>
                 <div className="row"><div contentEditable="true" className="column col-heading">Control</div></div>
             </div>
-            <div className="button-div has-items">
-            <div className="which-button-text">Column -&nbsp;</div>
-                <button className="big-button add-button" onClick={AddColumn}>Add</button>
-            </div>
-            <div className="button-div has-items">
-                <button className="big-button delete-button" onClick={deleteRow}>Delete</button>
-                <div className="which-button-text">- Row -</div>
-                <button className="big-button add-button" onClick={addRow}>Add</button>
+            <div className="option-buttons">
+                <div className="button-div has-items">
+                    <div className="which-button-text">Column -&nbsp;</div>
+                    <button className="big-button add-button" onClick={AddColumn}>Add</button>
+                </div>
+                <div className="button-div has-items">
+                    <button className="big-button delete-button" onClick={deleteRow}>Delete</button>
+                    <div className="which-button-text">- Row -</div>
+                    <button className="big-button add-button" onClick={addRow}>Add</button>
+                </div>
+                <div className="button-div has-items">
+                <div className="which-button-text">Save -&nbsp;</div>
+                    <button className="big-button add-button" onClick={trySave}>Save</button>
+                </div>
             </div>
         </div>        
     )
