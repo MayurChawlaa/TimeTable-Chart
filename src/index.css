@@ -48,6 +48,42 @@ code {
   font-weight: bold;
   width: 150px;
 }
+.button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin : 5px;
+}
+.has-items {
+  padding : 10px;
+  border: 1px solid black;
+}
+.big-button {
+  font-size: large;
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.add-button {
+  color: rgb(1, 61, 1);
+  background-color: greenyellow;
+}
+.add-button:hover {
+  color: white;
+  background-color: green;
+}
+.delete-button {
+  color:rgb(82, 1, 1);
+  background-color: lightcoral;
+}
+.delete-button:hover {
+  color:white;
+  background-color: red;
+}
+.which-button-text {
+  font-size: larger;
+  padding: 5px;
+}
 /* .App {
   display: flex;
   flex-direction: column;

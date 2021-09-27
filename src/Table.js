@@ -21,10 +21,78 @@ function Table(){
             document.getElementsByClassName("row")[i].appendChild(clone);
         }
     }
+    const addRow = () => {
+        //count number of columns already there
+        let childCount = document.getElementById("row").childElementCount;
+        console.log("children count : " + childCount);
+        //creating RowDiv
+        let rowDiv = document.createElement("div");
+        rowDiv.className = "row";
+        //creating heading column
+        let headingDiv = document.createElement("div");
+        headingDiv.className = "column col-heading";
+        headingDiv.setAttribute("contentEditable","true");
+        headingDiv.innerHTML = "Heading";
+        
+        //adding headingdiv to the row
+        rowDiv.appendChild(headingDiv);
+        
+        //creating div containing checkbox
+        let columnDiv = document.createElement("div");
+        columnDiv.className="column";
+        //creating checkbox
+        let created_checkbox = document.createElement("input");
+        created_checkbox.setAttribute("type", "checkbox");
+        //adding checkbox to the column div
+        columnDiv.appendChild(created_checkbox);
+        let created_element = columnDiv;
+        //adding created checkbox div to the row
+        for(let i=0;i<(childCount-1);i++)
+        {
+            let clone = created_element.cloneNode(true);
+            rowDiv.appendChild(clone);
+        }
+        
+        document.getElementById("table").appendChild(rowDiv);
+        // headingColumn.appendChild(headingDiv);
+        // //now creating checkbox columns
+        // //creating td
+        // let created_td = document.createElement("td");
+        // //creating div inside td
+        // let divoftd = document.createElement("div");
+        // divoftd.className = "column";
+        // //creating checkbox
+        // let created_checkbox = document.createElement("input")
+        // created_checkbox.setAttribute("type", "checkbox");
+        // //adding checkbox to div
+        // divoftd.appendChild(created_checkbox);
+        // //appending divoftd to td
+        // created_td.appendChild(divoftd);
+        // //final created element ready
+        // let created_element = created_td;
+
+        // //adding created headingcolumn to created row
+        // rowDiv.appendChild(headingColumn);
+        // //adding all tds inside rowDiv and rowDiv to the (tr)row
+        // for(let i=0;i<(childCount-1);i++)
+        // {
+        //     let clone = created_element.cloneNode(true);
+        //     rowDiv.appendChild(clone);
+        // }
+        // newRow.appendChild(rowDiv);
+        
+        // //adding the row to table
+        // document.getElementById("table").appendChild(newRow);
+    }
+    const deleteRow = () => {
+        console.log("delete Row");
+        let table = document.getElementById("table");
+        table.removeChild(table.lastElementChild);
+    }
     return(
         <div className="babu-container">
-            <div className="table">
-                <div className="row">
+            <div id="table" className="table">
+                <div id="row" className="row">
                     <div contentEditable="true" className="column col-heading">Wakeup Early</div>
                 </div>
                 <div className="row"><div contentEditable="true" className="column col-heading">250 JJ's - morning</div></div>
@@ -43,8 +111,14 @@ function Table(){
                 <div className="row"><div contentEditable="true" className="column col-heading">Early to Bed</div></div>
                 <div className="row"><div contentEditable="true" className="column col-heading">Control</div></div>
             </div>
-            <div>
-                <button onClick={AddColumn}>Add Column</button>
+            <div className="button-div has-items">
+            <div className="which-button-text">Column -&nbsp;</div>
+                <button className="big-button add-button" onClick={AddColumn}>Add</button>
+            </div>
+            <div className="button-div has-items">
+                <button className="big-button delete-button" onClick={deleteRow}>Delete</button>
+                <div className="which-button-text">- Row -</div>
+                <button className="big-button add-button" onClick={addRow}>Add</button>
             </div>
         </div>        
     )
