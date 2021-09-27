@@ -103,12 +103,18 @@ function Table(){
                 //console.log(elementalString);
                 objectToSave={};
                 objectToSave[elementalString] = arrayOfCheckboxes;
-                console.log(objectToSave);
+                console.log("Before JSON : ",objectToSave);
                 let jsonObjString = JSON.stringify(objectToSave);
                 JSON.parse(jsonObjString);
-                //console.log(JSON.parse(jsonObjString));
-                let fs = require('fs');
-                fs.writeFile("saveData.json",jsonObjString,'utf-8',()=>{});
+                console.log("JSON : ",jsonObjString);
+                var fs = require('fs');
+                fs.writeFileSync("saveData.json", jsonObjString, function(err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+                //let fs = require('fs');
+                //fs.writeFile("saveData.json",jsonObjString,'utf-8',()=>{});
             }
         }
 
