@@ -1,8 +1,6 @@
 function Table(){
     const AddColumn = () =>{
-        // //createing td
-        // let created_td = document.createElement("td");
-        //creating div inside td
+        //creating div
         let created_div = document.createElement("div");
         created_div.className = "column";
         //creating checkbox
@@ -10,9 +8,8 @@ function Table(){
         created_checkbox.setAttribute("type", "checkbox");
         //adding checkbox to div
         created_div.appendChild(created_checkbox);
-        // //appending divoftd to td
-        // created_td.appendChild(divoftd);
 
+        //adding created element to all the rows
         let created_element = created_div;
         let allrows = document.getElementsByClassName("row");
         for(var i=0;i<allrows.length;i++)
@@ -54,35 +51,6 @@ function Table(){
         }
         
         document.getElementById("table").appendChild(rowDiv);
-        // headingColumn.appendChild(headingDiv);
-        // //now creating checkbox columns
-        // //creating td
-        // let created_td = document.createElement("td");
-        // //creating div inside td
-        // let divoftd = document.createElement("div");
-        // divoftd.className = "column";
-        // //creating checkbox
-        // let created_checkbox = document.createElement("input")
-        // created_checkbox.setAttribute("type", "checkbox");
-        // //adding checkbox to div
-        // divoftd.appendChild(created_checkbox);
-        // //appending divoftd to td
-        // created_td.appendChild(divoftd);
-        // //final created element ready
-        // let created_element = created_td;
-
-        // //adding created headingcolumn to created row
-        // rowDiv.appendChild(headingColumn);
-        // //adding all tds inside rowDiv and rowDiv to the (tr)row
-        // for(let i=0;i<(childCount-1);i++)
-        // {
-        //     let clone = created_element.cloneNode(true);
-        //     rowDiv.appendChild(clone);
-        // }
-        // newRow.appendChild(rowDiv);
-        
-        // //adding the row to table
-        // document.getElementById("table").appendChild(newRow);
     }
     const deleteRow = () => {
         console.log("delete Row");
