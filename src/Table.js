@@ -67,35 +67,34 @@ function Table(){
         for(let i = 0;i<table.childElementCount;i++)
         {
             let oneRow = table.childNodes[i];
-            console.log("Row ",i," ", oneRow);
-            // let numofTdinaRow = oneRow.childNodes[0].childElementCount;
-            // let arrayOfCheckboxes = [];
-            // let rowDiv = oneRow.childNodes[0];
-            // //console.log(rowDiv.childNodes[0].childNodes[0].innerHTML);
-            // for(let j=0;j<numofTdinaRow;j++)
-            // {
-            //     //console.log(rowDiv.childNodes[j]);
-            //     let tdDiv = rowDiv.childNodes[j].childNodes[0];
-            //     if(tdDiv.childNodes[0].textContent)
-            //     {
-            //         console.log(tdDiv.childNodes[0].textContent);
-            //     }
-            //     else
-            //     {
-            //         let temp = tdDiv.childNodes;
-            //         if(temp[0].checked)
-            //         {
-            //             //console.log(1);
-            //             arrayOfCheckboxes.push(1);
-            //         }
-            //         else
-            //         {
-            //             //console.log(0);
-            //             arrayOfCheckboxes.push(0);
-            //         }
-            //     }
-            // }
-            // console.log(arrayOfCheckboxes);
+            //console.log("Row ",i," ", oneRow);
+            //console.log("",oneRow.childNodes.length);
+            let numberOfColumns = oneRow.childNodes.length;
+            let arrayOfCheckboxes = [];
+            for(let j=0;j<numberOfColumns;j++)
+            {
+                let elementals = oneRow.childNodes[j].childNodes[0];
+                //console.log(elementals);
+                if(elementals.textContent)
+                {
+                    console.log(elementals.textContent);
+                }
+                else
+                {
+                    let temp = elementals;
+                    if(temp.checked)
+                    {
+                        //console.log(1);
+                        arrayOfCheckboxes.push(1);
+                    }
+                    else
+                    {
+                        //console.log(0);
+                        arrayOfCheckboxes.push(0);
+                    }
+                }
+            }
+            console.log(arrayOfCheckboxes);
         }
 
         // let jsonObjString = JSON.stringify(table);
