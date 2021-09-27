@@ -60,8 +60,9 @@ function Table(){
     const trySave = () => {
         console.log("Saving");
         let table = document.getElementById("table");
-        console.log(table);
-        console.log("Child Count : ", table.childElementCount);
+        //console.log(table);
+        //console.log("Child Count : ", table.childElementCount);
+        let objectToSave = {};
         
         console.log("Child Elements : ");
         for(let i = 0;i<table.childElementCount;i++)
@@ -74,10 +75,12 @@ function Table(){
             for(let j=0;j<numberOfColumns;j++)
             {
                 let elementals = oneRow.childNodes[j].childNodes[0];
+                
                 //console.log(elementals);
                 if(elementals.textContent)
                 {
-                    console.log(elementals.textContent);
+                    var elementalString = elementals.textContent; 
+                    //console.log(elementals.textContent);
                 }
                 else
                 {
@@ -94,14 +97,26 @@ function Table(){
                     }
                 }
             }
-            console.log(arrayOfCheckboxes);
+            //console.log(arrayOfCheckboxes);
+            if(elementalString)
+            {
+                //console.log(elementalString);
+                objectToSave={};
+                objectToSave[elementalString] = arrayOfCheckboxes;
+                console.log(objectToSave);
+                let jsonObjString = JSON.stringify(objectToSave);
+                JSON.parse(jsonObjString);
+                //console.log(JSON.parse(jsonObjString));
+                let fs = require('fs');
+                fs.writeFile("saveData.json",jsonObjString,'utf-8',()=>{});
+            }
         }
 
-        // let jsonObjString = JSON.stringify(table);
+        // let jsonObjString = JSON.stringify(objectToSave);
         // JSON.parse(jsonObjString);
         // console.log(JSON.parse(jsonObjString));
-        // let fs = require('fs');
-        // fs.writeFile("saveData.json",jsonObj,'utf-8',()=>{});
+        // //let fs = require('fs');
+        // //fs.writeFile("saveData.json",jsonObj,'utf-8',()=>{});
     }
     return(
         <div className="babu-container">
