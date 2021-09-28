@@ -140,13 +140,11 @@ function Table(){
         let masterObj = [];
         masterObj = JSON.parse(localStorage.getItem('masterObject'));
         console.log(masterObj.length);
-        for(let i =0;i<masterObj.length;i++)
-        {
-            console.log(masterObj[i]);
-            console.log(toString(Object.keys(masterObj[i])));
-        }
-        
-        console.log(JSON.stringify(masterObj));
+        //console.log(masterObj);
+        masterObj.map((elem)=>{
+            console.log(elem);
+        })
+        let valuess = Object.values(masterObj);
     }
     return(
         <div className="babu-container">
