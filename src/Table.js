@@ -57,20 +57,14 @@ function Table(){
         let table = document.getElementById("table");
         table.removeChild(table.lastElementChild);
     }
-    let masterObj=[];
-    const creatingMasterObject = (name,array) => {
-        let tempObj={};
-        tempObj[name] = array;
-        masterObj.push(tempObj);
-        console.log(JSON.stringify(masterObj));
-    }
+    
     const trySave = () => {
         console.log("Saving");
         let table = document.getElementById("table");
         //console.log(table);
         //console.log("Child Count : ", table.childElementCount);
         let objectToSave = {};
-        
+        let masterObj=[];
         console.log("Child Elements : ");
         for(let i = 0;i<table.childElementCount;i++)
         {
@@ -110,11 +104,13 @@ function Table(){
                 //console.log(elementalString);
                 objectToSave={};
                 objectToSave[elementalString] = arrayOfCheckboxes;
-                creatingMasterObject(elementalString,arrayOfCheckboxes);
+                
+                masterObj.push(objectToSave);
+                //console.log(JSON.stringify(masterObj));
                 //console.log("Before JSON : ",objectToSave);
-                let jsonObjString = JSON.stringify(objectToSave);
-                JSON.parse(jsonObjString);
-                console.log(jsonObjString);
+                // let jsonObjString = JSON.stringify(objectToSave);
+                // JSON.parse(jsonObjString);
+                // console.log(jsonObjString);
                 //console.log("JSON : ",jsonObjString);
                 
                 // var fs = require('fs');
@@ -132,6 +128,25 @@ function Table(){
         // console.log(JSON.parse(jsonObjString));
         // //let fs = require('fs');
         // //fs.writeFile("saveData.json",jsonObj,'utf-8',()=>{});
+        if(localStorage.getItem('masterObject'))
+        {
+            localStorage.removeItem('masterObject');
+        }
+        localStorage.setItem('masterObject', JSON.stringify(masterObj));
+        console.log(JSON.stringify(masterObj));
+    }
+    const tryLoad = () => {
+        console.log("Loading");
+        let masterObj = [];
+        masterObj = JSON.parse(localStorage.getItem('masterObject'));
+        console.log(masterObj.length);
+        for(let i =0;i<masterObj.length;i++)
+        {
+            console.log(masterObj[i]);
+            console.log(toString(Object.keys(masterObj[i])));
+        }
+        
+        console.log(JSON.stringify(masterObj));
     }
     return(
         <div className="babu-container">
@@ -168,6 +183,10 @@ function Table(){
                 <div className="button-div has-items">
                 <div className="which-button-text">Save -&nbsp;</div>
                     <button className="big-button add-button" onClick={trySave}>Save</button>
+                </div>
+                <div className="button-div has-items">
+                    <div className="which-button-text">Load -&nbsp;</div>
+                    <button className="big-button load-button" onClick={tryLoad}>Load</button>
                 </div>
             </div>
         </div>        

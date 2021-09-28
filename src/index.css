@@ -80,6 +80,14 @@ code {
   color:white;
   background-color: red;
 }
+.load-button {
+  color:brown;
+  background-color:rgb(255, 216, 132);
+}
+.load-button:hover {
+  color:white;
+  background-color:orangered;
+}
 .which-button-text {
   font-size: larger;
   padding: 5px;
