@@ -57,6 +57,13 @@ function Table(){
         let table = document.getElementById("table");
         table.removeChild(table.lastElementChild);
     }
+    let masterObj=[];
+    const creatingMasterObject = (name,array) => {
+        let tempObj={};
+        tempObj[name] = array;
+        masterObj.push(tempObj);
+        console.log(JSON.stringify(masterObj));
+    }
     const trySave = () => {
         console.log("Saving");
         let table = document.getElementById("table");
@@ -103,21 +110,23 @@ function Table(){
                 //console.log(elementalString);
                 objectToSave={};
                 objectToSave[elementalString] = arrayOfCheckboxes;
-                console.log("Before JSON : ",objectToSave);
+                creatingMasterObject(elementalString,arrayOfCheckboxes);
+                //console.log("Before JSON : ",objectToSave);
                 let jsonObjString = JSON.stringify(objectToSave);
                 JSON.parse(jsonObjString);
-                console.log("JSON : ",jsonObjString);
-                var fs = require('fs');
-                fs.writeFileSync("saveData.json", jsonObjString, function(err) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
+                console.log(jsonObjString);
+                //console.log("JSON : ",jsonObjString);
+                
+                // var fs = require('fs');
+                // fs.writeFileSync("saveData.txt", JSON.parse(jsonObjString), function(err) {
+                //     if (err) {
+                //         console.log(err);
+                //     }
+                // });
                 //let fs = require('fs');
                 //fs.writeFile("saveData.json",jsonObjString,'utf-8',()=>{});
             }
         }
-
         // let jsonObjString = JSON.stringify(objectToSave);
         // JSON.parse(jsonObjString);
         // console.log(JSON.parse(jsonObjString));
