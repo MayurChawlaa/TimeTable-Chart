@@ -139,12 +139,66 @@ function Table(){
         console.log("Loading");
         let masterObj = [];
         masterObj = JSON.parse(localStorage.getItem('masterObject'));
-        console.log(masterObj.length);
+        let numberofRows = masterObj.length;
+        console.log(numberofRows);
+        let table = document.getElementById('table');
+        //emptying table
+        while(table.firstChild)
+        {
+            table.removeChild(table.firstChild);
+        }
+        //console.log(table);
+        //console.log(masterObj.length);
         //console.log(masterObj);
+        //printing single single objects
         masterObj.map((elem)=>{
-            console.log(elem);
+            for (let i in elem){
+                //console.log(i);
+                let heading_name = i;
+                let array_values = elem[i];
+                //adding the fetched values to the table
+                let newRow = document.createElement("div");
+                newRow.className="row";
+                //creating heading column
+                let headingColumn = document.createElement("div");
+                headingColumn.className= "column col-heading";
+                headingColumn.innerHTML = heading_name;
+                //appending column to row
+                newRow.appendChild(headingColumn);
+                
+                //creating checkbox columns
+                //creating div
+                let created_div = document.createElement("div");
+                created_div.className = "column";
+                //creating checkbox
+                let created_checkbox = document.createElement("input")
+                created_checkbox.setAttribute("type", "checkbox");
+                //adding checkbox to div
+                created_div.appendChild(created_checkbox);
+                let created_element = created_div;
+                //let temp_array = array_values;
+                for(let m=0;m<array_values.length;m++)
+                {
+                    //console.log(array_values[m]);
+                    //console.log(created_element);
+                    let temp = created_element.cloneNode(true);
+                    if(array_values[m])
+                    {
+                        temp.childNodes[0].checked = true;
+                    }
+                    //console.log(temp.childNodes[0].checked);
+                    newRow.appendChild(temp);
+                }
+                table.appendChild(newRow);
+
+                console.log(heading_name,array_values);
+            }
+            // elem.map((key,value)=>{
+            //     console.log.apply(key,value);
+            // })
+            //console.log(elem);
         })
-        let valuess = Object.values(masterObj);
+        //let valuess = Object.values(masterObj);
     }
     return(
         <div className="babu-container">
