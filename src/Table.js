@@ -162,6 +162,7 @@ function Table(){
                 //creating heading column
                 let headingColumn = document.createElement("div");
                 headingColumn.className= "column col-heading";
+                headingColumn.setAttribute("contentEditable","true");
                 headingColumn.innerHTML = heading_name;
                 //appending column to row
                 newRow.appendChild(headingColumn);
@@ -197,7 +198,9 @@ function Table(){
             //     console.log.apply(key,value);
             // })
             //console.log(elem);
-        })
+        });
+        table.firstChild.id = "row";
+        console.log(table);
         //let valuess = Object.values(masterObj);
     }
     return(
